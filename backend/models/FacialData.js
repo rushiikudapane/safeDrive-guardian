@@ -16,4 +16,4 @@ const FacialData = mongoose.Schema(
   }
 );
 
-module.exports = FacialData;
+module.exports = mongoose.model("Facial Data", FacialData);
