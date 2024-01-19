@@ -23,3 +23,5 @@ const Users = mongoose.Schema(
     timestamp: true,
   }
 );
+
+module.exports = mongoose.model("Users", Users);

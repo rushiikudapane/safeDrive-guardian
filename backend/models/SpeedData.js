@@ -20,4 +20,4 @@ const SpeedData = mongoose.Schema(
   }
 );
 
-module.exports = SpeedData;
+module.exports = mongoose.model("SpeedData", SpeedData);
