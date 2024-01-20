@@ -1,94 +1,72 @@
-// import { TouchableOpacity,StyleSheet,View,Text,Image } from 'react-native'
-// import React from 'react';
-// import { useNavigation } from '@react-navigation/native';
 
-// // import { JosefinSans_400Regular,JosefinSans_500Medium,JosefinSans_700Bold,JosefinSans_1000Medium } from "@expo-google-fonts/josefin-sans";
-// // import { useFonts } from "expo-font";
-// // import AppLoading from "expo-app-loading";
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { StyleSheet} from 'react-native'
 
-// const Menu = () => {
+// Screens
 
-//   // let [fontsLoaded]=useFonts({
-//   //   JosefinSans_400Regular,
-//   //   JosefinSans_500Medium,
-//   //   JosefinSans_700Bold,
-//   //   JosefinSans_1000Medium
-//   // });
-  
-//   // if(!fontsLoaded){
-//   //   <AppLoading/>;
-//   // }
+import Home from '../Screens/Home';
+import Notifications from '../Screens/Notifications';
+import MyProfile from '../Screens/MyProfile';
+import Map from '../Screens/Map';
 
-//     const navigation=useNavigation();
+//Screen names
+const HomeName = "Home";
+const NotificationsName = "Notifications";
+const MapName = "Map";
+const MyProfileName = "MyProfile";
 
-//     return (
-//     <View style={styles.menuContainer}>
-//       <TouchableOpacity 
-//         style={styles.buttonStyle}
-//         onPress={()=>navigation.navigate("Home")}
-//         >
-//         <Image 
-//             style={styles.iconStyle}
-//             source={require("../../assets/Icons/home.png")}
-//         />
-//         <Text style={styles.textStyle}>Home</Text>
-//       </TouchableOpacity>
+const Stack = createBottomTabNavigator();
 
-//       <TouchableOpacity 
-//         style={styles.buttonStyle}
-//         onPress={()=>navigation.navigate("Notifications")}
-//         >
-//         <Image 
-//             style={styles.iconStyle}
-//             source={require("../../assets/Icons/notification.png")}
-//         />
-//         <Text style={styles.textStyle}>Notifications</Text>
-//       </TouchableOpacity>
+function Menu() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName={HomeName}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            let rn = route.name;
 
-//       <TouchableOpacity 
-//         style={styles.buttonStyle}
-//         onPress={()=>navigation.navigate("Map")}
-//         >
-//         <Image 
-//             style={styles.iconStyle}
-//             source={require("../../assets/Icons/map.png")}
-//         />
-//         <Text style={styles.textStyle}>Map</Text>
-//       </TouchableOpacity>
+            if (rn === HomeName) {
+              iconName = focused ? 'home-sharp' : 'home';
 
-//       <TouchableOpacity 
-//         style={styles.buttonStyle}
-//         onPress={()=>navigation.navigate("Myprofile")}
-//         >
-//         <Image 
-//             style={styles.iconStyle}
-//             source={require("../../assets/Icons/myprofile.png")}
-//         />
-//         <Text style={styles.textStyle}>My Profile</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
+            } else if (rn === NotificationsName) {
+              iconName = focused ? 'notifications-sharp' : 'notifications-outline';
 
-// export default Menu
+            } else if (rn === MapName) {
+              iconName = focused ? 'map-sharp' : 'map-outline';
 
-// const styles = StyleSheet.create({
-//     menuContainer:{
-//         flexDirection:"row",
-//         justifyContent:'space-evenly'
-//     },
+            } else if (rn === MyProfileName) {
+              iconName = focused ? 'person-circle' : 'person-circle-outline';
 
-//     textStyle:{
-//         fontFamily:"JosefinSans_500Medium"
-//     },
+            }
 
-//     iconStyle:{
-//         width:"100%",
-//         height:50,
-//         aspectRatio:1,
-//     }
-// })
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'black',
+          labelStyle: { paddingBottom: 10, fontSize: 10 },
+          style: { padding: 15, height: 70}
+        }}>
 
-// BottomTabNavigator.js
+        <Stack.Screen name={HomeName} component={Home} />
+        <Stack.Screen name={NotificationsName} component={Notifications} />
+        <Stack.Screen name={MapName} component={Map} />
+        <Stack.Screen name={MyProfileName} component={MyProfile} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default Menu;
+
+
 
 
