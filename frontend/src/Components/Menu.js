@@ -16,7 +16,7 @@ import Map from '../Screens/Map';
 const HomeName = "Home";
 const NotificationsName = "Notifications";
 const MapName = "Map";
-const MyProfileName = "MyProfile";
+const MyProfileName = "My Profile";
 
 const Stack = createBottomTabNavigator();
 
