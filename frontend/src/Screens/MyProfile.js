@@ -1,11 +1,9 @@
-
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 const MyProfile = () => {
   return (
     <View style={styles.container}>
-
       <View style={styles.imageContainer}>
         <Image
           style={styles.imgStyle}
@@ -59,16 +57,16 @@ const MyProfile = () => {
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   imageContainer: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   imgStyle: {
     width: 150,
@@ -77,32 +75,32 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   userName: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 10,
   },
   editProfileButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: "#3498db",
     padding: 10,
     borderRadius: 5,
     marginTop: 20,
   },
   buttonText: {
-    color: '#fff',
-    textAlign: 'center',
+    color: "#fff",
+    textAlign: "center",
   },
   detailsContainer: {
     marginTop: 20,
   },
   detailLabel: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 5,
   },
   detailValueContainer: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     padding: 10,
     marginBottom: 10,
   },
