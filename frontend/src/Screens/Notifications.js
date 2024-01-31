@@ -111,6 +111,48 @@ const Notifications = ({ navigation }) => {
       icon: require("../../assets/Icons/notification.png"),
       details: "Details about the new follower...",
     },
+    {
+      id: "3",
+      title: "New Message",
+      message: "John sent you a message",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the message...",
+    },
+    {
+      id: "4",
+      title: "New Follower",
+      message: "You have a new follower",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the new follower...",
+    },
+    {
+      id: "5",
+      title: "New Message",
+      message: "John sent you a message",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the message...",
+    },
+    {
+      id: "6",
+      title: "New Follower",
+      message: "You have a new follower",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the new follower...",
+    },
+    {
+      id: "7",
+      title: "New Message",
+      message: "John sent you a message",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the message...",
+    },
+    {
+      id: "8",
+      title: "New Follower",
+      message: "You have a new follower",
+      icon: require("../../assets/Icons/notification.png"),
+      details: "Details about the new follower...",
+    },
     // Add more notifications as needed
   ];
 
@@ -126,30 +168,24 @@ const Notifications = ({ navigation }) => {
   };
 
   const renderNotificationItem = ({ item }) => (
-    <TouchableOpacity
-      // style={[
-      //   styles.notificationItem,
-      //   {
-      //     backgroundColor: clickedNotifications.includes(item.id)
-      //       ? "#808080"
-      //       : "#ddd",
-      //   },
-      // ]}
-      className="flex flex-row items-center px-3 py-3 bg-blue-300 my-1 rounded-lg"
-      onPress={() => handleNotificationClick(item)}
-    >
-      <Image source={item.icon} style={styles.notificationIcon} />
-      <View style={styles.notificationContent}>
-        <Text style={styles.notificationTitle}>{item.title}</Text>
-        <Text style={styles.notificationMessage}>{item.message}</Text>
-      </View>
-    </TouchableOpacity>
+    <View className="items-center mt-1">
+      <TouchableOpacity
+        className="flex flex-row items-center w-11/12 px-3 py-3 bg-blue-200 shadow-xl shadow-black my-1 rounded-xl"
+        onPress={() => handleNotificationClick(item)}
+      >
+        <Image source={item.icon} style={styles.notificationIcon} />
+        <View style={styles.notificationContent}>
+          <Text style={styles.notificationTitle}>{item.title}</Text>
+          <Text style={styles.notificationMessage}>{item.message}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 
   return (
-    <View className="bg-blue-100 w-full h-full px-3 py-5">
-      {/* <Text style={styles.header}>Notifications</Text> */}
+    <View className="bg-blue-50 w-full h-full">
       <FlatList
+        className="w-full h-full"
         data={notifications}
         keyExtractor={(item) => item.id}
         renderItem={renderNotificationItem}

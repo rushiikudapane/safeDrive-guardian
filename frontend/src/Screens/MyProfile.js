@@ -1,109 +1,96 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
 
 const MyProfile = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.imgStyle}
-          source={require("../../assets/Selfphoto.jpg")}
-        />
+    <ScrollView>
+      <View className="flex flex-col bg-blue-50 w-full h-full">
+        <View className="flex flex-row mx-5 my-5 px-2 py-2 border border-cyan-900 bg-blue-200 rounded-xl shadow-2xl shadow-black">
+          <View className="items-start">
+            <Image
+              className="h-36 w-36 rounded-full"
+              source={require("../../assets/Selfphoto.jpg")}
+            />
+          </View>
+          <View className="py-2 px-2 justify-center items-start">
+            <Text className="text-3xl text-emerald-900 font-bold">
+              Rushiraj
+            </Text>
+            <Text className="text-3xl text-emerald-900 font-bold">
+              Kudapane
+            </Text>
+            <Text className="text-lg text-gray-700">Resposible Driver</Text>
+          </View>
+        </View>
+        <View className="flex flex-col px-1 pt-2 pb-4 mb-5 mx-5 bg-blue-200 rounded-xl shadow-xl border border-cyan-900 shadow-black">
+          <View>
+            <Text className="text-2xl px-3 py-2 mb-1 ml-1 text-emerald-900">
+              Statistics
+            </Text>
+          </View>
+
+          <View className="flex flex-row justify-around">
+            <View className="w-1/3 items-center">
+              <MaterialCommunityIcons
+                name="speedometer"
+                size={65}
+                color="rgba(0,40,53,0.95)"
+              />
+              <Text className="text-center mt-1 text-xl text-cyan-900">
+                100 km/hr
+              </Text>
+              <Text className="text-center mt-1 text-gray-700">
+                Overall Avg. Speed
+              </Text>
+            </View>
+            <View className="w-1/3 items-center">
+              <FontAwesome5 name="road" size={65} color="rgba(0,40,53,0.95)" />
+              <Text className="text-center mt-1 text-xl text-cyan-900">
+                352 km
+              </Text>
+              <Text className="text-center mt-1 text-gray-700">
+                Total Distance Travelled
+              </Text>
+            </View>
+            <View className="w-1/3 items-center">
+              <Octicons name="gift" size={65} color="rgba(0,40,53,0.95)" />
+              <Text className="text-center mt-1 text-xl text-cyan-900">0</Text>
+              <Text className="text-center mt-1 text-gray-700">
+                Total Safety Points Earned
+              </Text>
+            </View>
+          </View>
+
+          <View className="mt-5">
+            <View className="items-center">
+              <TouchableOpacity className="w-4/5 px-2 py-3 items-center mt-6 rounded-xl bg-cyan-900">
+                <Text className="text-white">Update Profile</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="items-center">
+              <TouchableOpacity className="w-4/5 px-2 py-3 items-center mt-4 rounded-xl bg-cyan-900">
+                <Text className="text-white">Settings</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="items-center">
+              <TouchableOpacity className="w-4/5 px-2 py-3 items-center mt-4 rounded-xl bg-cyan-900">
+                <Text className="text-white">Emergency Contacts</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="items-center">
+              <TouchableOpacity className="w-4/5 px-2 py-3 items-center mt-4 rounded-xl border-2 border-cyan-900">
+                <Text className="text-cyan-900">Feedback/Support</Text>
+              </TouchableOpacity>
+            </View>
+            <Text className="text-center mt-4 text-cyan-900">version 1.0</Text>
+          </View>
+        </View>
       </View>
-
-      <Text style={styles.userName}>USER_NAME</Text>
-
-      <TouchableOpacity
-        style={styles.editProfileButton}
-        // onPress={() => courseDetails()}
-      >
-        <Text style={styles.buttonText}>Edit Profile</Text>
-      </TouchableOpacity>
-
-      <View style={styles.detailsContainer}>
-        <Text style={styles.detailLabel}>Email</Text>
-        <View style={styles.detailValueContainer}>
-          <Text>xyz@gmail.com</Text>
-        </View>
-
-        <Text style={styles.detailLabel}>Contact Number</Text>
-        <View style={styles.detailValueContainer}>
-          <Text>7038571520</Text>
-        </View>
-
-        <Text style={styles.detailLabel}>Total Trips</Text>
-        <View style={styles.detailValueContainer}>
-          <Text>23</Text>
-        </View>
-
-        <Text style={styles.detailLabel}>Total Alerts</Text>
-        <View style={styles.detailValueContainer}>
-          <Text>2</Text>
-        </View>
-      </View>
-
-      <TouchableOpacity
-        style={styles.editProfileButton}
-        // onPress={() => xyz()}
-      >
-        <Text style={styles.buttonText}>Settings</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.editProfileButton}
-        // onPress={() => courseDetails()}
-      >
-        <Text style={styles.buttonText}>Log Out</Text>
-      </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: "#fff",
-  },
-  imageContainer: {
-    alignItems: "center",
-  },
-  imgStyle: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginTop: 20,
-  },
-  userName: {
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  editProfileButton: {
-    backgroundColor: "#3498db",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 20,
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: "center",
-  },
-  detailsContainer: {
-    marginTop: 20,
-  },
-  detailLabel: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  detailValueContainer: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginBottom: 10,
-  },
-});
 
 export default MyProfile;

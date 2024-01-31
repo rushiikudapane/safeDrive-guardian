@@ -1,63 +1,73 @@
 // Home.js
 
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
 
 const Home = () => {
   return (
-    <View className="bg-blue-100 flex flex-col items-center h-full">
-      <View className="w-full">
-        <View className="px-6 py-4">
-          <Text className="font-thin text-4xl text-cyan-900 rounded-t-3xl">
-            Hello, User
-          </Text>
-          <Text className="font-thin text-sm text-cyan-900 rounded-t-3xl">
-            Stay Alert, Stay Safe
-          </Text>
-        </View>
-        <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
-          <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
-            <Text className="text-6xl">7</Text>
-            <Text className="text-lg">Alerts Raised</Text>
+    <ScrollView>
+      <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
+        <View className="w-full">
+          <View className="px-6 py-4">
+            <Text className="font-thin text-4xl text-cyan-900 rounded-t-3xl">
+              Hello, User
+            </Text>
+            <Text className="font-thin text-sm text-cyan-900 rounded-t-3xl">
+              Stay Alert, Stay Safe
+            </Text>
           </View>
-          <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-200">
-            <Text className="text-6xl">3</Text>
-            <Text className="text-lg">Sleep Count</Text>
-          </View>
-        </View>
-        <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
-          <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-200">
-            <View className="flex flex-row items-baseline">
-              <Text className="text-6xl">55</Text>
-              <Text className="text-2xl pl-2">km/hr</Text>
+          <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
+            <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
+              <Text className="text-6xl">7</Text>
+              <Text className="text-lg">Alerts Raised</Text>
             </View>
-            <Text className="text-lg">Inst. Speed</Text>
-          </View>
-          <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
-            <View className="flex flex-row items-baseline">
-              <Text className="text-6xl">40</Text>
-              <Text className="text-2xl pl-1">km/hr</Text>
+            <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-200">
+              <Text className="text-6xl">3</Text>
+              <Text className="text-lg">Sleep Count</Text>
             </View>
-            <Text className="text-lg">Avg. Speed</Text>
+          </View>
+          <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
+            <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-200">
+              <View className="flex flex-row items-baseline">
+                <Text className="text-6xl">55</Text>
+                <Text className="text-2xl pl-2">km/hr</Text>
+              </View>
+              <Text className="text-lg">Inst. Speed</Text>
+            </View>
+            <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
+              <View className="flex flex-row items-baseline">
+                <Text className="text-6xl">40</Text>
+                <Text className="text-2xl pl-1">km/hr</Text>
+              </View>
+              <Text className="text-lg">Avg. Speed</Text>
+            </View>
+          </View>
+          <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
+            <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
+              <Text className="text-6xl">3</Text>
+              <Text className="text-lg">Call Blocks Count</Text>
+            </View>
+            <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center px-5 bg-blue-200">
+              <Text className="text-6xl text-gray-700">-</Text>
+              <Text className="text-lg text-gray-700">Reward Points</Text>
+              <Text className="text-sm text-gray-700">
+                feature to be launch
+              </Text>
+            </View>
           </View>
         </View>
-        <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
-          <View className="w-2/5 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-300">
-            <Text className="text-6xl">3</Text>
-            <Text className="text-lg">Call Blocks Count</Text>
-          </View>
-          <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center px-5 bg-blue-200">
-            <Text className="text-6xl text-gray-700">-</Text>
-            <Text className="text-lg text-gray-700">Reward Points</Text>
-            <Text className="text-sm text-gray-700">feature to be launch</Text>
-          </View>
-        </View>
-      </View>
-      <Image
-        source={require("../../assets/safe-drive logo.jpeg")}
-        className="h-36 w-96 rounded-full mt-2"
-      />
-      {/* 
+        <Image
+          source={require("../../assets/safe-drive logo.jpeg")}
+          className="h-36 w-96 rounded-full mt-2"
+        />
+        {/* 
       <View style={styles.contentContainer}>
         <Text style={styles.title}>Safe-Drive Guardian</Text>
         <Text style={styles.subtitle}>Stay Alert, Stay Safe</Text>
@@ -73,56 +83,9 @@ const Home = () => {
       <View style={styles.footer}>
         <Text style={styles.footerText}>Version 1.0.0</Text>
       </View> */}
-    </View>
+      </View>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f4f4f4",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  logo: {
-    width: 350,
-    height: 150,
-    borderRadius: 75,
-    marginTop: 20,
-  },
-  contentContainer: {
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#333",
-  },
-  subtitle: {
-    fontSize: 18,
-    color: "#666",
-    marginBottom: 30,
-  },
-  button: {
-    backgroundColor: "tomato",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  footer: {
-    marginTop: 20,
-  },
-  footerText: {
-    color: "#888",
-    fontSize: 14,
-  },
-});
 
 export default Home;
