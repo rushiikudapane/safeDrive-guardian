@@ -1240,10 +1240,10 @@
     "mv" "~2"
     "safe-json-stringify" "~1"
 
-"@expo/cli@0.17.1":
-  "integrity" "sha512-7TS7UguHF6KVMVJQKwBgmV/azyPg5Oq/HuSUzWz2rSZbjCpP0ZhEK4WHUNI0uHRxW1AbGYg9ToRkUG53bZlm4Q=="
-  "resolved" "https://registry.npmjs.org/@expo/cli/-/cli-0.17.1.tgz"
-  "version" "0.17.1"
+"@expo/cli@0.17.4":
+  "integrity" "sha512-6pswecVC9qCBp1qa004D2HjPeXKYDaw/PhyUOsqnF7AUCwunlKa1tJO0Ik8zxzF68kuywIOXUnTJl74Z2aHqiw=="
+  "resolved" "https://registry.npmjs.org/@expo/cli/-/cli-0.17.4.tgz"
+  "version" "0.17.4"
   dependencies:
     "@babel/runtime" "^7.20.0"
     "@expo/code-signing-certificates" "0.0.5"
@@ -1257,7 +1257,7 @@
     "@expo/osascript" "^2.0.31"
     "@expo/package-manager" "^1.1.1"
     "@expo/plist" "^0.1.0"
-    "@expo/prebuild-config" "6.7.3"
+    "@expo/prebuild-config" "6.7.4"
     "@expo/rudder-sdk-node" "1.1.1"
     "@expo/spawn-async" "1.5.0"
     "@expo/xcpretty" "^4.3.0"
@@ -1297,6 +1297,7 @@
     "npm-package-arg" "^7.0.0"
     "open" "^8.3.0"
     "ora" "3.4.0"
+    "picomatch" "^3.0.1"
     "pretty-bytes" "5.6.0"
     "progress" "2.0.3"
     "prompts" "^2.3.2"
@@ -1309,6 +1310,7 @@
     "semver" "^7.5.3"
     "send" "^0.18.0"
     "slugify" "^1.3.4"
+    "source-map-support" "~0.5.21"
     "structured-headers" "^0.4.1"
     "tar" "^6.0.5"
     "temp-dir" "^2.0.0"
@@ -1506,10 +1508,10 @@
     "base64-js" "^1.2.3"
     "xmlbuilder" "^14.0.0"
 
-"@expo/prebuild-config@6.7.3":
-  "integrity" "sha512-jZIHzlnvdg4Gnln06XR9tvirL3hSp/Jh48COhLKs51vb3THCWumUytZBS4DSMdvGwf8btnaB01Zg00xQhSDBsA=="
-  "resolved" "https://registry.npmjs.org/@expo/prebuild-config/-/prebuild-config-6.7.3.tgz"
-  "version" "6.7.3"
+"@expo/prebuild-config@6.7.4":
+  "integrity" "sha512-x8EUdCa8DTMZ/dtEXjHAdlP+ljf6oSeSKNzhycXiHhpMSMG9jEhV28ocCwc6cKsjK5GziweEiHwvrj6+vsBlhA=="
+  "resolved" "https://registry.npmjs.org/@expo/prebuild-config/-/prebuild-config-6.7.4.tgz"
+  "version" "6.7.4"
   dependencies:
     "@expo/config" "~8.5.0"
     "@expo/config-plugins" "~7.8.0"
@@ -1885,6 +1887,11 @@
     "prompts" "^2.4.2"
     "semver" "^7.5.2"
 
+"@react-native-community/geolocation@^3.1.0":
+  "integrity" "sha512-Aj76wMeCLz9kczpe7W2IXxSRNj+hRR7sqyfXq9ZaJIWNH23jeJfzMpovclg+e1uM8Vr8jCYEcZyD4rKub6Vc/Q=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-3.1.0.tgz"
+  "version" "3.1.0"
+
 "@react-native/assets-registry@~0.73.1", "@react-native/assets-registry@0.73.1":
   "integrity" "sha512-2FgAbU7uKM5SbbW9QptPPZx8N9Ke2L7bsHb+EhAanZjFZunA9PaYtyjUQ1s7HD+zDVqOQIvjkpXSv7Kejd2tqg=="
   "resolved" "https://registry.npmjs.org/@react-native/assets-registry/-/assets-registry-0.73.1.tgz"
@@ -2129,7 +2136,7 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@types/geojson@^7946.0.10":
+"@types/geojson@^7946.0.13":
   "integrity" "sha512-bmrNrgKMOhM3WsafmbGmC+6dsF2Z308vLFsQ3a/bT8X8Sv5clVYpPars/UPq+sAaJP+5OoLAYgwbkS5QEJdLUQ=="
   "resolved" "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.13.tgz"
   "version" "7946.0.13"
@@ -3397,10 +3404,10 @@
   dependencies:
     "@expo/config" "~8.5.0"
 
-"expo-file-system@~16.0.0", "expo-file-system@~16.0.4":
-  "integrity" "sha512-H6WIzAi2rS7NaRXemolInejvdW6GllpBDWdQTa+6jPkfKg7PVL+ovzf5Ebb4EQl2O2dAQtF31LLQkps5Rdb92g=="
-  "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-16.0.4.tgz"
-  "version" "16.0.4"
+"expo-file-system@~16.0.0", "expo-file-system@~16.0.5":
+  "integrity" "sha512-JpKMbKfwTaMCbwUwq7MwcSbPR7r+IqZEL3RFam3ClPHDtKLnlEoywREeaDsWjSZb7dS25hG3WqXspfTuugCDvg=="
+  "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-16.0.5.tgz"
+  "version" "16.0.5"
 
 "expo-font@~11.10.2":
   "integrity" "sha512-AE0Q0LiWiVosQ/jlKUPoWoob7p3GwYM2xmLoUkuopO9RYh9NL1hZKHiMKcWBZyDG8Gww1GtBQwh7ZREST8+jjQ=="
@@ -3426,10 +3433,10 @@
     "find-up" "^5.0.0"
     "fs-extra" "^9.1.0"
 
-"expo-modules-core@1.11.7":
-  "integrity" "sha512-4LFoCaoO36pQCQpge4jLjDSFkO5qpPYl5FMRF6FkwqO3gCpaQu5SUeErZKT4gaon9WHDCWuGVTRtNSjgN5jwVw=="
-  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-1.11.7.tgz"
-  "version" "1.11.7"
+"expo-modules-core@1.11.8":
+  "integrity" "sha512-rlctE3nCNLCGv3LosGQNaTuwGrr2SyQA+hOgci/0l+VRc0gFNtvl0gskph9C0tnN1jzBeb8rRZQYVj5ih1yxcA=="
+  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-1.11.8.tgz"
+  "version" "1.11.8"
   dependencies:
     "invariant" "^2.2.4"
 
@@ -3438,24 +3445,24 @@
   "resolved" "https://registry.npmjs.org/expo-status-bar/-/expo-status-bar-1.11.1.tgz"
   "version" "1.11.1"
 
-"expo@*", "expo@~50.0.2":
-  "integrity" "sha512-nHb/ACe+vVm8lKkKj3LIWgypQI9oGSe9aNSzeJhT3/sBW/KIrnaSMgjs0WujqEJ85xMiXt7EQlwIFIdtBW82jg=="
-  "resolved" "https://registry.npmjs.org/expo/-/expo-50.0.2.tgz"
-  "version" "50.0.2"
+"expo@*", "expo@^50.0.5":
+  "integrity" "sha512-gfZbJv8eqVG1xX8QqlQHF4Mn6HnLFuE14Kq5FRUVZQWE+IhlrP+mr+un7Zdp/3a63Bp/VkPzHi77G1bVP1pM7A=="
+  "resolved" "https://registry.npmjs.org/expo/-/expo-50.0.5.tgz"
+  "version" "50.0.5"
   dependencies:
     "@babel/runtime" "^7.20.0"
-    "@expo/cli" "0.17.1"
+    "@expo/cli" "0.17.4"
     "@expo/config" "8.5.4"
     "@expo/config-plugins" "7.8.4"
     "@expo/metro-config" "0.17.3"
     "@expo/vector-icons" "^14.0.0"
     "babel-preset-expo" "~10.0.1"
     "expo-asset" "~9.0.2"
-    "expo-file-system" "~16.0.4"
+    "expo-file-system" "~16.0.5"
     "expo-font" "~11.10.2"
     "expo-keep-awake" "~12.8.2"
     "expo-modules-autolinking" "1.10.2"
-    "expo-modules-core" "1.11.7"
+    "expo-modules-core" "1.11.8"
     "fbemitter" "^3.0.0"
     "whatwg-url-without-unicode" "8.0.0-3"
 
@@ -3902,9 +3909,9 @@
   "version" "1.2.1"
 
 "ignore@^5.2.0":
-  "integrity" "sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg=="
-  "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.3.0.tgz"
-  "version" "5.3.0"
+  "integrity" "sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw=="
+  "resolved" "https://registry.npmjs.org/ignore/-/ignore-5.3.1.tgz"
+  "version" "5.3.1"
 
 "image-size@^1.0.2":
   "integrity" "sha512-541xKlUw6jr/6gGuk92F+mYM5zaFAc5ahphvkqvNe2bQ6gVBkd6bfrmVJ2t4KDAfikAYZyIqTnktX3i6/aQDrQ=="
@@ -5280,6 +5287,11 @@
   "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   "version" "2.3.1"
 
+"picomatch@^3.0.1":
+  "integrity" "sha512-I3EurrIQMlRc9IaAZnqRR044Phh2DXY+55o7uJ0V+hYZAcQYSuFWsc9q5PvyDHUSCe1Qxn/iBz+78s86zWnGag=="
+  "resolved" "https://registry.npmjs.org/picomatch/-/picomatch-3.0.1.tgz"
+  "version" "3.0.1"
+
 "pify@^2.3.0":
   "integrity" "sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog=="
   "resolved" "https://registry.npmjs.org/pify/-/pify-2.3.0.tgz"
@@ -5576,6 +5588,11 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
 
+"react-native-geolocation-service@^5.3.1":
+  "integrity" "sha512-LTXPtPNmrdhx+yeWG47sAaCgQc3nG1z+HLLHlhK/5YfOgfLcAb9HAkhREPjQKPZOUx8pKZMIpdGFUGfJYtimXQ=="
+  "resolved" "https://registry.npmjs.org/react-native-geolocation-service/-/react-native-geolocation-service-5.3.1.tgz"
+  "version" "5.3.1"
+
 "react-native-ionicons@^4.6.5":
   "integrity" "sha512-s2Ia7M5t609LE9LWygMj3ALVPUlKhK7R9XcMb67fP4EYJv0oLcwg5pc+8ftv9XXaUuTW/WgL3zJlBYxAvtvMJg=="
   "resolved" "https://registry.npmjs.org/react-native-ionicons/-/react-native-ionicons-4.6.5.tgz"
@@ -5586,12 +5603,12 @@
   "resolved" "https://registry.npmjs.org/react-native-linear-gradient/-/react-native-linear-gradient-2.8.3.tgz"
   "version" "2.8.3"
 
-"react-native-maps@^1.8.0":
-  "integrity" "sha512-KfVZ03L42+a22Fkcl2uDe5d+73BweTlcRUzm2G+aQUJ7fHrBxj7CuXWtKMSNpVDiO3YDCWcshiiyjSXxkd/qOw=="
-  "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-1.8.0.tgz"
-  "version" "1.8.0"
+"react-native-maps@^1.10.0":
+  "integrity" "sha512-Zs6lHZucEijTwkRVFyInMbPVkJ2UudDEI2fJPc8ArdzdnwDFAdL6OagqTjNRZyI1DBPHRihazfIWpy2+X1VwLg=="
+  "resolved" "https://registry.npmjs.org/react-native-maps/-/react-native-maps-1.10.0.tgz"
+  "version" "1.10.0"
   dependencies:
-    "@types/geojson" "^7946.0.10"
+    "@types/geojson" "^7946.0.13"
 
 "react-native-paper@^5.12.1":
   "integrity" "sha512-6ZBBJBsHxXUG5mD22Q0tArTlk5GpGlhZDkRU1RRqPtTpxWCMc7Dbc04pU3+qG0peJQCAO6GnXqUbkZ0YLnMPNg=="
@@ -6127,7 +6144,7 @@
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   "version" "1.0.2"
 
-"source-map-support@^0.5.16", "source-map-support@~0.5.20":
+"source-map-support@^0.5.16", "source-map-support@~0.5.20", "source-map-support@~0.5.21":
   "integrity" "sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w=="
   "resolved" "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz"
   "version" "0.5.21"

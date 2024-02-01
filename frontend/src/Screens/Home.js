@@ -1,18 +1,64 @@
-// Home.js
-
 import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
-  TouchableOpacity,
   Image,
   ScrollView,
+  PermissionsAndroid,
+  TouchableOpacity,
 } from "react-native";
+
+import Geolocation from "@react-native-community/geolocation";
+
+const requestLocationPermission = async () => {
+  try {
+    const isGranted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: "Geolocation Permission",
+        message: "Can we access your location?",
+        buttonNeutral: "Ask me later",
+        buttonNegative: "Cancel",
+        buttonPositive: "OK",
+      }
+    );
+
+    if (isGranted === "granted") {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+if (requestLocationPermission) {
+  Geolocation.watchPosition(
+    (position) => {
+      console.log(position.coords.speed);
+    },
+    (err) => {
+      console.log(err.code, err.message);
+    },
+    {
+      enableHighAccuracy: true,
+      distanceFilter: 0,
+      interval: 1000,
+      fastestInterval: 500,
+    }
+  );
+} else {
+  console.log("you need to allow the permission");
+}
 
 const Home = () => {
   return (
     <ScrollView>
+      {/* <TouchableOpacity onPress={requestLocationPermission}>
+        <Text>Click me</Text>
+      </TouchableOpacity> */}
+
       <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
         <View className="w-full">
           <View className="px-6 py-4">
