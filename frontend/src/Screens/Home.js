@@ -1,65 +1,99 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  PermissionsAndroid,
-  TouchableOpacity,
-} from "react-native";
-
-import Geolocation from "@react-native-community/geolocation";
-
-const requestLocationPermission = async () => {
-  try {
-    const isGranted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      {
-        title: "Geolocation Permission",
-        message: "Can we access your location?",
-        buttonNeutral: "Ask me later",
-        buttonNegative: "Cancel",
-        buttonPositive: "OK",
-      }
-    );
-
-    if (isGranted === "granted") {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-if (requestLocationPermission) {
-  Geolocation.watchPosition(
-    (position) => {
-      console.log(position.coords.speed);
-    },
-    (err) => {
-      console.log(err.code, err.message);
-    },
-    {
-      enableHighAccuracy: true,
-      distanceFilter: 0,
-      interval: 1000,
-      fastestInterval: 500,
-    }
-  );
-} else {
-  console.log("you need to allow the permission");
-}
+import React, { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import * as Location from "expo-location";
+import { Alert } from "react-native";
+import * as Notification from "expo-notifications";
+import { Audio } from "expo-av";
 
 const Home = () => {
+  const [speed, setSpeed] = useState(0);
+  const [statusBarMessage, setStatusBarMessage] = useState("");
+  useEffect(() => {
+    getLocationPermission();
+  }, []);
+
+  // function to get location permission from user
+  const getLocationPermission = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status != "granted") {
+      console.log("Location Permission in not granted!");
+      Alert.alert("Permissions to access the location was denied");
+      return;
+    }
+    getLocation();
+    return () => {};
+  };
+
+  // function to fetch current speed from location object
+  const getLocation = async () => {
+    const sound = new Audio.Sound();
+    await sound.loadAsync(require("../../assets/Audio/warning.mp3"));
+
+    try {
+      const location = await Location.watchPositionAsync(
+        {
+          accuracy: Location.Accuracy.High,
+          timeInterval: 500,
+          distanceInterval: 0,
+        },
+        async (location) => {
+          console.log(location.coords.speed);
+          const currentSpeed = Math.floor(location.coords.speed);
+          const speedLimit = 1;
+
+          if (currentSpeed >= speedLimit) {
+            setStatusBarMessage(
+              "Slow Down! You are exceeding the speed limit."
+            );
+            // setTimeout(() => setStatusBarMessage(""), 5000);
+
+            // keeping notification alert box commented incase we need it again for drowsiness detection feature
+            // Notification.cancelScheduledNotificationAsync({
+            //   content: {
+            //     title: "Slow Down User!",
+            //     body: "You are exceeding the speed limit.",
+            //   },
+            //   trigger: null,
+            // });
+
+            const playBackStatus = await sound.getStatusAsync();
+
+            if (!playBackStatus.isPlaying) {
+              await sound.playAsync();
+            }
+            // Alert.alert("Slow Down!, You are exceeding the speed limit.");
+          } else {
+            setStatusBarMessage("");
+            const playBackStatus = await sound.getStatusAsync();
+            if (playBackStatus.isPlaying) {
+              await sound.unloadAsync();
+              await sound.loadAsync(require("../../assets/Audio/warning.mp3"));
+            }
+          }
+          setSpeed(currentSpeed);
+        }
+      );
+
+      // console.log(location);
+    } catch (err) {
+      console.log("Error while fetching location:", err);
+    }
+  };
+
   return (
     <ScrollView>
-      {/* <TouchableOpacity onPress={requestLocationPermission}>
-        <Text>Click me</Text>
-      </TouchableOpacity> */}
-
       <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
+        <StatusBar style="auto" />
+        {statusBarMessage ? (
+          <View className="h-10 w-full bg-red-700 shadow-xl border-b-2 border-red-900 shadow-black flex justify-center">
+            <Text className=" text-sm text-center text-blue-50">
+              {statusBarMessage}
+            </Text>
+          </View>
+        ) : null}
+
         <View className="w-full">
           <View className="px-6 py-4">
             <Text className="font-thin text-4xl text-cyan-900 rounded-t-3xl">
@@ -82,7 +116,7 @@ const Home = () => {
           <View className="flex flex-row w-full items-start text-start px-3 my-3 justify-evenly">
             <View className="w-2/4 h-32 rounded-xl shadow-xl shadow-black justify-center pl-5 bg-blue-200">
               <View className="flex flex-row items-baseline">
-                <Text className="text-6xl">55</Text>
+                <Text className="text-6xl">{speed}</Text>
                 <Text className="text-2xl pl-2">km/hr</Text>
               </View>
               <Text className="text-lg">Inst. Speed</Text>
