@@ -39,7 +39,7 @@ const Home = () => {
           distanceInterval: 0,
         },
         async (location) => {
-          console.log(location.coords.speed);
+          // console.log(location.coords.speed);
           const currentSpeed = Math.floor(location.coords.speed);
           const speedLimit = 1;
 
