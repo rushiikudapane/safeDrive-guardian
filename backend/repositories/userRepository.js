@@ -6,12 +6,14 @@ const getUser = async () => {
   return response;
 };
 
-const registerUser = async (name, email, contact, driversLicense) => {
+const registerUser = async (name, photo, email, mobile, gender, age) => {
   const newUser = new userSchema({
     name,
+    photo,
     email,
-    contact,
-    driversLicense,
+    mobile,
+    gender,
+    age,
   });
 
   await newUser.save();

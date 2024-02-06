@@ -11,9 +11,9 @@ const getUserService = () => {
 };
 
 const registerUserService = (reqBody) => {
-  const { name, email, contact, driversLicense } = reqBody;
+  const { name, photo, email, mobile, gender, age } = reqBody;
   try {
-    userRepository.registerUser(name, email, contact, driversLicense);
+    userRepository.registerUser(name, photo, email, mobile, gender, age);
     return true;
   } catch (err) {
     console.log(err);
