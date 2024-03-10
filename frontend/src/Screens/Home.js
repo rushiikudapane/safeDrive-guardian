@@ -1,17 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import * as Location from "expo-location";
 import { Alert } from "react-native";
 import * as Notification from "expo-notifications";
 import { Audio } from "expo-av";
+// import { Camera, getCameraPermissionsAsync } from "expo-camera";
 
 const Home = () => {
   const [speed, setSpeed] = useState(0);
   const [statusBarMessage, setStatusBarMessage] = useState("");
+  // const cameraRef = useRef(null);
+  // const [hasCameraPermission, setHasCameraPermission] = useState(null);
+
   useEffect(() => {
     getLocationPermission();
+    // getCameraPermission();
+    // capturePhoto();
   }, []);
+
+  // // function ask for camera permission
+  // const getCameraPermission = async () => {
+  //   const { status } = await Camera.requestCameraPermissionsAsync();
+  //   setHasCameraPermission(status == "granted");
+  // };
 
   // function to get location permission from user
   const getLocationPermission = async () => {
@@ -25,6 +37,15 @@ const Home = () => {
     getLocation();
     return () => {};
   };
+
+  // const capturePhoto = () => {
+  //   setInterval(async () => {
+  //     if (cameraRef.current) {
+  //       let photo = await cameraRef.current.takePictureAsync();
+  //       console.log(photo);
+  //     }
+  //   }, 5000);
+  // };
 
   // function to fetch current speed from location object
   const getLocation = async () => {
@@ -85,6 +106,13 @@ const Home = () => {
   return (
     <ScrollView>
       <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
+        {/* {hasCameraPermission && (
+          <Camera
+            style={{ flex: 1 }}
+            type={Camera.Constants.Type.front}
+            ref={cameraRef}
+          />
+        )} */}
         <StatusBar style="auto" />
         {statusBarMessage ? (
           <View className="h-10 w-full bg-red-700 shadow-xl border-b-2 border-red-900 shadow-black flex justify-center">
