@@ -5,25 +5,34 @@ import * as Location from "expo-location";
 import { Alert } from "react-native";
 import * as Notification from "expo-notifications";
 import { Audio } from "expo-av";
-// import { Camera, getCameraPermissionsAsync } from "expo-camera";
+import { Camera, getCameraPermissionsAsync } from "expo-camera";
 
 const Home = () => {
   const [speed, setSpeed] = useState(0);
   const [statusBarMessage, setStatusBarMessage] = useState("");
-  // const cameraRef = useRef(null);
-  // const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const cameraRef = useRef(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
 
   useEffect(() => {
     getLocationPermission();
-    // getCameraPermission();
-    // capturePhoto();
+    getCameraPermission();
   }, []);
 
-  // // function ask for camera permission
-  // const getCameraPermission = async () => {
-  //   const { status } = await Camera.requestCameraPermissionsAsync();
-  //   setHasCameraPermission(status == "granted");
-  // };
+  useEffect(() => {
+    if (hasCameraPermission) {
+      capturePhoto();
+    }
+  }, [hasCameraPermission]);
+
+  // function ask for camera permission
+  const getCameraPermission = async () => {
+    const { status } = await Camera.requestCameraPermissionsAsync();
+    setHasCameraPermission(status == "granted");
+    console.log(
+      "permisiion status from getCameraPermission: ",
+      hasCameraPermission
+    );
+  };
 
   // function to get location permission from user
   const getLocationPermission = async () => {
@@ -38,14 +47,22 @@ const Home = () => {
     return () => {};
   };
 
-  // const capturePhoto = () => {
-  //   setInterval(async () => {
-  //     if (cameraRef.current) {
-  //       let photo = await cameraRef.current.takePictureAsync();
-  //       console.log(photo);
-  //     }
-  //   }, 5000);
-  // };
+  const capturePhoto = async () => {
+    console.log("permisiion status from capturePhoto: ", hasCameraPermission);
+    console.log("camera reference: ", cameraRef.current);
+    // setTimeout(async () => {
+    if (cameraRef.current) {
+      try {
+        setTimeout(async () => {
+          let photo = await cameraRef.current.takePictureAsync();
+          console.log("Captured photo object: ", photo);
+        }, 5000);
+      } catch (err) {
+        console.log("Error while capturign the photo: ", err);
+      }
+    }
+    // }, 5000);
+  };
 
   // function to fetch current speed from location object
   const getLocation = async () => {
@@ -106,13 +123,14 @@ const Home = () => {
   return (
     <ScrollView>
       <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
-        {/* {hasCameraPermission && (
+        {hasCameraPermission && (
           <Camera
             style={{ flex: 1 }}
             type={Camera.Constants.Type.front}
+            autoFocus={Camera.Constants.AutoFocus.off}
             ref={cameraRef}
           />
-        )} */}
+        )}
         <StatusBar style="auto" />
         {statusBarMessage ? (
           <View className="h-10 w-full bg-red-700 shadow-xl border-b-2 border-red-900 shadow-black flex justify-center">
