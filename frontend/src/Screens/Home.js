@@ -5,7 +5,7 @@ import * as Location from "expo-location";
 import { Alert } from "react-native";
 import * as Notification from "expo-notifications";
 import { Audio } from "expo-av";
-import { Camera, getCameraPermissionsAsync } from "expo-camera";
+import { Camera, CameraType } from "expo-camera";
 
 const Home = () => {
   const [speed, setSpeed] = useState(0);
@@ -20,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     if (hasCameraPermission) {
-      capturePhoto();
+      // capturePhoto();
     }
   }, [hasCameraPermission]);
 
@@ -49,17 +49,19 @@ const Home = () => {
 
   const capturePhoto = async () => {
     console.log("permisiion status from capturePhoto: ", hasCameraPermission);
-    console.log("camera reference: ", cameraRef.current);
+    // console.log("camera reference: ", cameraRef.current);
     // setTimeout(async () => {
-    if (cameraRef.current) {
+    if (cameraRef.current != null) {
       try {
-        setTimeout(async () => {
-          let photo = await cameraRef.current.takePictureAsync();
-          console.log("Captured photo object: ", photo);
-        }, 5000);
+        // setTimeout(async () => {
+        let photo = await cameraRef.current.takePictureAsync(null);
+        console.log("Captured photo object: ", photo.uri);
+        // }, 5000);
       } catch (err) {
-        console.log("Error while capturign the photo: ", err);
+        console.log("Error while capturign the photo: ", err.message);
       }
+    } else {
+      console.log("Camera ref is null");
     }
     // }, 5000);
   };
@@ -123,13 +125,22 @@ const Home = () => {
   return (
     <ScrollView>
       <View className="bg-blue-100 flex flex-col items-center h-full mb-10">
-        {hasCameraPermission && (
+        {hasCameraPermission ? (
           <Camera
             style={{ flex: 1 }}
-            type={Camera.Constants.Type.front}
+            type={CameraType.front}
             autoFocus={Camera.Constants.AutoFocus.off}
             ref={cameraRef}
+            onCameraReady={() => {
+              console.log("Camera is ready");
+              capturePhoto();
+            }}
+            onMountError={() => {
+              console.log("error while loading camera");
+            }}
           />
+        ) : (
+          <Text>No camera permission granted.</Text>
         )}
         <StatusBar style="auto" />
         {statusBarMessage ? (
